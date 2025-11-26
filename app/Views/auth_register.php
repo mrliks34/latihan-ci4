@@ -34,12 +34,12 @@
         }
 
         .btn-success {
-            background-color: #11998e;
+            background-color: #1e3c72;
             border: none;
         }
 
         .btn-success:hover {
-            background-color: #38ef7d;
+            background-color: #2a5298;
         }
     </style>
 </head>
@@ -55,7 +55,7 @@
 
                 <div class="card card-login p-3">
                     <div class="card-header text-center">
-                        <h3 class="fw-bold text-success">BUAT AKUN BARU</h3>
+                        <h3 class="fw-bold text-primary">BUAT AKUN BARU</h3>
                         <p class="text-muted small">Join Ilkom C Media Team</p>
                     </div>
                     <div class="card-body">
@@ -87,7 +87,7 @@
 
                         <div class="text-center mt-4">
                             <span class="text-muted small">Sudah punya akun?</span>
-                            <a href="/login" class="text-decoration-none fw-bold text-success">Login disini</a>
+                            <a href="/login" class="text-decoration-none fw-bold text-primary">Login disini</a>
                         </div>
                     </div>
                 </div>
