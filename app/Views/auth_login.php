@@ -4,45 +4,89 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login - Portal Perusahaan</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Login - Ilkom C Malam Media</title>
+
+    <link href="<?= base_url('css/bootstrap.min.css') ?>" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-login {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .card-header {
+            background-color: #fff;
+            border-bottom: none;
+            padding-top: 30px;
+        }
+
+        .btn-primary {
+            background-color: #1e3c72;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #2a5298;
+        }
+    </style>
 </head>
 
-<body class="bg-light">
-    <div class="container mt-5">
+<body>
+    <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-5">
+            <div class="col-md-4">
+
                 <?php if (session()->getFlashdata('msg')): ?>
-                    <div class="alert alert-warning"><?= session()->getFlashdata('msg') ?></div>
+                    <div class="alert alert-danger shadow-sm border-0">
+                        <?= session()->getFlashdata('msg') ?>
+                    </div>
                 <?php endif; ?>
 
-                <div class="card shadow-sm">
-                    <div class="card-header text-center bg-primary text-white">
-                        <h4>Login System</h4>
+                <div class="card card-login p-3">
+                    <div class="card-header text-center">
+                        <h3 class="fw-bold text-primary">ILKOM C MEDIA</h3>
+                        <p class="text-muted small">Masuk Untuk Melihat Berita</p>
                     </div>
                     <div class="card-body">
                         <form action="/login/auth" method="post">
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email address</label>
-                                <input type="email" name="email" class="form-control" id="email" required>
+                            <div class="form-floating mb-3">
+                                <label for="floatingInput">Email address</label>
+                                <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
                             </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" name="password" class="form-control" id="password" required>
+                            <div class="form-floating mb-3">
+                                <label for="floatingPassword">Password</label>
+                                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required>
                             </div>
-                            <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary">Masuk</button>
+                            <div class="text-center mb-3">
+                                <button type="submit" class="btn btn-primary btn-lg px-5">Masuk</button>
                             </div>
                         </form>
-                        <hr>
-                        <div class="text-center">
-                            Belum punya akun? <a href="/register">Daftar disini</a>
+                        <div class="text-center mt-4">
+                            <span class="text-muted small">Belum punya akun?</span>
+                            <a href="/register" class="text-decoration-none fw-bold">Daftar Sekarang</a>
                         </div>
                     </div>
                 </div>
+
+                <div class="text-center mt-3 text-white-50 small">
+                    &copy; 2025 Ilkom C Media Corp.
+                </div>
+
             </div>
         </div>
     </div>
+
+    <script src="<?= base_url('js/bootstrap.bundle.min.js') ?>"></script>
 </body>
 
 </html>

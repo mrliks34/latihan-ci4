@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Berita Codeigniter</title>
+    <title>Admin Dashboard</title>
 
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?= base_url('css/bootstrap.min.css') ?>" />
 </head>
 
@@ -22,9 +21,9 @@
         </div>
     </div>
 
-    <!-- Custom scripts for all pages-->
     <script src="<?= base_url('js/jquery.min.js') ?>"></script>
-    <script src="<?= base_url('js/bootstrap.min.js') ?>"></script>
+
+    <script src="<?= base_url('js/bootstrap.bundle.min.js') ?>"></script>
 
 </body>
 
