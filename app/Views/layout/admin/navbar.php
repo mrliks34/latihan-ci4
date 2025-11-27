@@ -9,16 +9,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('admin/news') ?>">Dashboard</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('admin/users') ?>">Manajemen User</a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('news') ?>" target="_blank">Lihat Website</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Setting</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-danger btn-sm text-white ml-3" href="<?= base_url('logout') ?>">Logout</a>
                 </li>
             </ul>
         </div>

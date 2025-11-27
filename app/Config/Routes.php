@@ -28,4 +28,7 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->post('news/(:segment)/edit', 'NewsAdmin::edit/$1');
     $routes->get('news/(:segment)/delete', 'NewsAdmin::delete/$1');
     $routes->get('news/(:segment)/preview', 'NewsAdmin::preview/$1');
+    $routes->get('news/(:segment)/preview', 'NewsAdmin::preview/$1');
+    $routes->get('users', 'UserAdmin::index');
+    $routes->get('users/(:num)/delete', 'UserAdmin::delete/$1');
 });
