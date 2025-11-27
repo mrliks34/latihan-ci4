@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Register - Nexus Portal</title>
+    <title>Register - Ilkom C Media</title>
 
     <link href="<?= base_url('css/bootstrap.min.css') ?>" rel="stylesheet">
 
@@ -93,7 +93,7 @@
                 </div>
 
                 <div class="text-center mt-3 text-white-50 small">
-                    &copy; 2025 Nexus Media Corp.
+                    &copy; Ilkom C Media Team 2025
                 </div>
 
             </div>

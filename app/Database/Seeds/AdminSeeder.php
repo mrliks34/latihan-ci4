@@ -10,7 +10,7 @@ class AdminSeeder extends Seeder
     {
         $data = [
             'name'      => 'Super Admin',
-            'email'     => 'admin@nexus.com',
+            'email'     => 'admin@ilkom.com',
             'password'  => password_hash('admin123', PASSWORD_DEFAULT),
             'role'      => 'admin',
             'created_at' => date('Y-m-d H:i:s'),
