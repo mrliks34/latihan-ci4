@@ -7,22 +7,39 @@ use App\Models\PegawaiModel;
 class Pegawai extends BaseController
 {
     // --- HALAMAN PUBLIK (FRONTEND) ---
-    // Poin 4A: Hanya menampilkan data
     public function index()
     {
         $model = new PegawaiModel();
         $data['pegawai'] = $model->findAll();
-        return view('pegawai_public', $data); // Nanti kita buat view ini
+        return view('pegawai_public', $data);
     }
 
     // --- HALAMAN ADMIN (BACKEND) ---
-    // Poin 4B: Aksi CRUD
 
-    // 1. READ (Tabel Admin)
+    // 1. READ (Tabel Admin + Filter)
     public function adminList()
     {
         $model = new PegawaiModel();
+
+        // Ambil Data Pencarian dari URL
+        $keyword = $this->request->getGet('keyword');
+        $divisi  = $this->request->getGet('divisi');
+
+        // --- PERBAIKAN 1: Langsung pakai $model, jangan $builder terpisah ---
+        if ($keyword) {
+            $model->like('nama_pegawai', $keyword);
+        }
+        if ($divisi) {
+            $model->where('divisi', $divisi);
+        }
+
+        // Eksekusi query (otomatis menyertakan filter di atas jika ada)
         $data['pegawai'] = $model->findAll();
+
+        // Kirim balik inputan ke view biar gak hilang
+        $data['keyword'] = $keyword;
+        $data['divisi']  = $divisi;
+
         return view('admin_pegawai_list', $data);
     }
 
@@ -36,21 +53,19 @@ class Pegawai extends BaseController
     {
         $model = new PegawaiModel();
 
-        // Ambil file foto
         $foto = $this->request->getFile('foto_pegawai');
 
-        // Cek apakah user upload foto?
         if ($foto->isValid() && ! $foto->hasMoved()) {
-            // Generate nama random biar gak kembar
             $namaFoto = $foto->getRandomName();
-            // Pindahkan ke folder public/uploads
             $foto->move('uploads', $namaFoto);
         } else {
-            $namaFoto = 'default.jpg'; // Foto bawaan kalau gak upload
+            $namaFoto = 'default.jpg';
         }
 
         $model->save([
             'nama_pegawai'  => $this->request->getPost('nama_pegawai'),
+            // --- PERBAIKAN 2: Tambahkan input Divisi ---
+            'divisi'        => $this->request->getPost('divisi'),
             'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
             'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
             'foto_pegawai'  => $namaFoto
@@ -74,22 +89,20 @@ class Pegawai extends BaseController
 
         $foto = $this->request->getFile('foto_pegawai');
 
-        // Logika Ganti Foto
         if ($foto->isValid() && ! $foto->hasMoved()) {
-            // Hapus foto lama jika bukan default
             if ($oldData['foto_pegawai'] != 'default.jpg' && file_exists('uploads/' . $oldData['foto_pegawai'])) {
                 unlink('uploads/' . $oldData['foto_pegawai']);
             }
-            // Upload foto baru
             $namaFoto = $foto->getRandomName();
             $foto->move('uploads', $namaFoto);
         } else {
-            // Kalau gak upload baru, pakai nama lama
             $namaFoto = $oldData['foto_pegawai'];
         }
 
         $model->update($id, [
             'nama_pegawai'  => $this->request->getPost('nama_pegawai'),
+            // --- PERBAIKAN 3: Jangan lupa update Divisi juga ---
+            'divisi'        => $this->request->getPost('divisi'),
             'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
             'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
             'foto_pegawai'  => $namaFoto
@@ -104,7 +117,6 @@ class Pegawai extends BaseController
         $model = new PegawaiModel();
         $data = $model->find($id);
 
-        // Hapus file foto dari folder
         if ($data['foto_pegawai'] != 'default.jpg' && file_exists('uploads/' . $data['foto_pegawai'])) {
             unlink('uploads/' . $data['foto_pegawai']);
         }

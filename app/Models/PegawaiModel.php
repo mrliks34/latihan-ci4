@@ -11,5 +11,5 @@ class PegawaiModel extends Model
     protected $useAutoIncrement = true;
     protected $useTimestamps    = true;
 
-    protected $allowedFields    = ['nama_pegawai', 'tanggal_lahir', 'jenis_kelamin', 'foto_pegawai'];
+    protected $allowedFields    = ['nama_pegawai', 'divisi', 'tanggal_lahir', 'jenis_kelamin', 'foto_pegawai'];
 }
