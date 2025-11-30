@@ -17,10 +17,9 @@
                     <select name="divisi" class="form-select bg-light border-0">
                         <option value="">- Semua Divisi -</option>
                         <option value="IT" <?= ($divisi == 'IT') ? 'selected' : '' ?>>IT / Tech</option>
-                        <option value="HRD" <?= ($divisi == 'HRD') ? 'selected' : '' ?>>HRD</option>
+                        <option value="HR" <?= ($divisi == 'HR') ? 'selected' : '' ?>>HR (Human Resources)</option>
+                        <option value="Produksi" <?= ($divisi == 'Produksi') ? 'selected' : '' ?>>Produksi</option>
                         <option value="Marketing" <?= ($divisi == 'Marketing') ? 'selected' : '' ?>>Marketing</option>
-                        <option value="Keuangan" <?= ($divisi == 'Keuangan') ? 'selected' : '' ?>>Keuangan</option>
-                        <option value="Redaksi" <?= ($divisi == 'Redaksi') ? 'selected' : '' ?>>Redaksi</option>
                     </select>
                 </div>
                 <div class="col-md-2">

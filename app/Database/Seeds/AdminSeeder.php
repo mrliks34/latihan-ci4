@@ -8,13 +8,29 @@ class AdminSeeder extends Seeder
 {
     public function run()
     {
+        // Ambil data rahasia dari file .env
+        $email = getenv('ADMIN_EMAIL');
+        $password = getenv('ADMIN_PASSWORD');
+
+        // Cek dulu, kalau di .env kosong, jangan jalankan (biar gak error)
+        if (empty($email) || empty($password)) {
+            $email = 'admin@default.com';
+            $password = 'admin123';
+        }
+
         $data = [
             'name'      => 'Super Admin',
-            'email'     => 'admin@ilkom.com',
-            'password'  => password_hash('admin123', PASSWORD_DEFAULT),
+            'email'     => $email,
+            'password'  => password_hash($password, PASSWORD_DEFAULT),
             'role'      => 'admin',
             'created_at' => date('Y-m-d H:i:s'),
         ];
-        $this->db->table('users')->insert($data);
+
+
+        $cek = $this->db->table('users')->where('email', $email)->get()->getRow();
+
+        if (!$cek) {
+            $this->db->table('users')->insert($data);
+        }
     }
 }

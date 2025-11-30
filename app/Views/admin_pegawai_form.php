@@ -19,6 +19,16 @@
             </div>
 
             <div class="mb-3">
+                <label class="form-label">Divisi</label>
+                <select name="divisi" class="form-select">
+                    <option value="IT">IT / Tech</option>
+                    <option value="HR">HR (Human Resources)</option>
+                    <option value="Produksi">Produksi</option>
+                    <option value="Marketing">Marketing</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
                 <label>Jenis Kelamin</label>
                 <select name="jenis_kelamin" class="form-select">
                     <option value="Laki-laki">Laki-laki</option>
