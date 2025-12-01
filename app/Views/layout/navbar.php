@@ -15,6 +15,9 @@
                     <a class="nav-link" href="<?= base_url('about') ?>">Tentang Kami</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('pegawai') ?>">Tim Kami</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('contact') ?>">Kontak</a>
                 </li>
                 <li class="nav-item">
