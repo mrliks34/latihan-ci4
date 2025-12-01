@@ -38,6 +38,7 @@
                     <tr>
                         <th class="ps-4 py-3">Profil</th>
                         <th>Nama & Divisi</th>
+                        <th>Tanggal Lahir</th>
                         <th>Gender</th>
                         <th>Aksi</th>
                     </tr>
@@ -45,7 +46,7 @@
                 <tbody>
                     <?php if (empty($pegawai)): ?>
                         <tr>
-                            <td colspan="4" class="text-center py-4 text-muted">Data tidak ditemukan.</td>
+                            <td colspan="5" class="text-center py-4 text-muted">Data tidak ditemukan.</td>
                         </tr>
                     <?php else: ?>
                         <?php foreach ($pegawai as $p): ?>
@@ -59,6 +60,13 @@
                                     <div class="fw-bold text-dark"><?= esc($p['nama_pegawai']) ?></div>
                                     <span class="badge bg-light text-secondary border"><?= esc($p['divisi']) ?></span>
                                 </td>
+
+                                <td>
+                                    <span class="text-muted small">
+                                        <?= date('d M Y', strtotime($p['tanggal_lahir'])) ?>
+                                    </span>
+                                </td>
+
                                 <td><?= $p['jenis_kelamin'] ?></td>
                                 <td>
                                     <a href="<?= base_url('admin/pegawai/edit/' . $p['id_pegawai']) ?>" class="btn btn-sm btn-light text-primary fw-bold border">Edit</a>
