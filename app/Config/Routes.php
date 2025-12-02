@@ -41,6 +41,12 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
 
     // 2. Kelola User
     $routes->get('users', 'UserAdmin::index');
+    $routes->get('users/create', 'UserAdmin::create');
+    $routes->post('users/store', 'UserAdmin::store');
+
+    $routes->get('users/(:num)/edit', 'UserAdmin::edit/$1');
+    $routes->post('users/(:num)/update', 'UserAdmin::update/$1');
+
     $routes->get('users/(:num)/delete', 'UserAdmin::delete/$1');
 
     // 3. Kelola Pegawai (Tugas Baru)

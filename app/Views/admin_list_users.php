@@ -46,6 +46,10 @@
                             </td>
                             <td class="text-muted small"><?= $user['created_at'] ?></td>
                             <td class="text-end pe-4">
+                                <a href="<?= base_url('admin/users/' . $user['id'] . '/edit') ?>" class="btn btn-sm btn-outline-warning me-1">
+                                    Edit
+                                </a>
+
                                 <a href="#" data-href="<?= base_url('admin/users/' . $user['id'] . '/delete') ?>" onclick="confirmToDelete(this)" class="btn btn-sm btn-outline-danger">
                                     Hapus
                                 </a>
