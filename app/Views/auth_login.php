@@ -14,10 +14,6 @@
 
     <style>
         body {
-            /* BACKGROUND KORAN 
-               Kita pakai gambar dari Unsplash + Overlay Hitam Transparan (rgba)
-               biar mata tidak sakit dan kartu login menonjol.
-            */
             background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
                 url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=2070&auto=format&fit=crop');
 
@@ -108,10 +104,29 @@
                                 <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
                             </div>
 
-                            <div class="form-floating mb-3">
-                                <label for="floatingPassword">Password</label>
-                                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+                            <div class="mb-3">
+                                <label for="password" class="form-label fw-bold">Password</label>
+                                <div class="input-group">
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan password" required>
+                                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                        👁️
+                                    </button>
+                                </div>
                             </div>
+
+                            <script>
+                                const togglePassword = document.querySelector('#togglePassword');
+                                const password = document.querySelector('#password');
+
+                                togglePassword.addEventListener('click', function(e) {
+                                    // Toggle tipe input antara password dan text
+                                    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                                    password.setAttribute('type', type);
+
+                                    // Ganti ikon (opsional)
+                                    this.textContent = type === 'password' ? '👁️' : '🙈';
+                                });
+                            </script>
 
                             <div class="text-center mb-3 mt-4">
                                 <button type="submit" class="btn btn-primary btn-lg w-100 py-2">MASUK</button>

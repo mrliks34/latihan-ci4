@@ -6,8 +6,8 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
-// --- ROUTE PUBLIK (Bisa diakses siapa saja) ---
-$routes->get('/', 'Auth::login');
+// --- ROUTE PUBLIK 
+$routes->get('/', 'News::index');
 $routes->get('/about', 'Page::about');
 $routes->get('/contact', 'Page::contact');
 $routes->get('/faqs', 'Page::faqs');
@@ -25,6 +25,12 @@ $routes->post('login/auth', 'Auth::auth');
 $routes->get('register', 'Auth::register');
 $routes->post('register/save', 'Auth::save');
 $routes->get('logout', 'Auth::logout');
+
+// Taruh di bagian User Logged In
+$routes->group('', ['filter' => 'auth'], function ($routes) {
+    $routes->get('profile', 'Profile::index');
+    $routes->post('profile/update', 'Profile::update');
+});
 
 
 // --- ROUTE ADMIN (Harus Login & Role Admin) ---
