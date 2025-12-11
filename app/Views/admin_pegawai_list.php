@@ -13,6 +13,7 @@
                 <div class="col-md-4">
                     <input type="text" name="keyword" class="form-control bg-light border-0" placeholder="Cari Nama Karyawan..." value="<?= $keyword ?>">
                 </div>
+
                 <div class="col-md-3">
                     <select name="divisi" class="form-select bg-light border-0">
                         <option value="">- Semua Divisi -</option>
@@ -22,6 +23,15 @@
                         <option value="Marketing" <?= ($divisi == 'Marketing') ? 'selected' : '' ?>>Marketing</option>
                     </select>
                 </div>
+
+                <div class="col-md-3">
+                    <select name="gender" class="form-select bg-light border-0">
+                        <option value="">- Semua Gender</option>
+                        <option value="Laki-laki" <?= ($gender == 'Laki-laki') ? 'selected' : '' ?>>Laki-laki</option>
+                        <option value="Perempuan" <?= ($gender == 'Perempuan') ? 'selected' : '' ?>>Perempuan</option>
+                    </select>
+                </div>
+
                 <div class="col-md-2">
                     <button type="submit" class="btn btn-dark w-100">Cari / Filter</button>
                 </div>

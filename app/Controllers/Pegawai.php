@@ -6,7 +6,7 @@ use App\Models\PegawaiModel;
 
 class Pegawai extends BaseController
 {
-    // --- HALAMAN PUBLIK (FRONTEND) ---
+    // --- FRONTEND ---
     public function index()
     {
         $model = new PegawaiModel();
@@ -14,36 +14,46 @@ class Pegawai extends BaseController
         return view('pegawai_public', $data);
     }
 
-    // --- HALAMAN ADMIN (BACKEND) ---
+    // --- BACKEND ---
 
-    // 1. READ (Tabel Admin + Filter)
+    // 1. READ + FILTER
     public function adminList()
     {
         $model = new PegawaiModel();
 
-        // Ambil Data Pencarian dari URL
+        // Ambil Input
         $keyword = $this->request->getGet('keyword');
         $divisi  = $this->request->getGet('divisi');
+        $gender  = $this->request->getGet('gender');
 
-        // --- PERBAIKAN 1: Langsung pakai $model, jangan $builder terpisah ---
+        // Logic Cari (Nama ATAU Divisi)
         if ($keyword) {
-            $model->like('nama_pegawai', $keyword);
+            $model->groupStart()
+                ->like('nama_pegawai', $keyword)
+                ->orLike('divisi', $keyword)
+                ->groupEnd();
         }
+
+        // Logic Filter
         if ($divisi) {
             $model->where('divisi', $divisi);
         }
+        if ($gender) {
+            $model->where('jenis_kelamin', $gender);
+        }
 
-        // Eksekusi query (otomatis menyertakan filter di atas jika ada)
-        $data['pegawai'] = $model->findAll();
-
-        // Kirim balik inputan ke view biar gak hilang
-        $data['keyword'] = $keyword;
-        $data['divisi']  = $divisi;
+        // Eksekusi
+        $data = [
+            'pegawai'   => $model->findAll(),
+            'keyword'   => $keyword,
+            'divisi'    => $divisi,
+            'gender'    => $gender
+        ];
 
         return view('admin_pegawai_list', $data);
     }
 
-    // 2. CREATE (Form Tambah)
+    // 2. CREATE
     public function create()
     {
         return view('admin_pegawai_form');
@@ -52,7 +62,6 @@ class Pegawai extends BaseController
     public function store()
     {
         $model = new PegawaiModel();
-
         $foto = $this->request->getFile('foto_pegawai');
 
         if ($foto->isValid() && ! $foto->hasMoved()) {
@@ -64,17 +73,16 @@ class Pegawai extends BaseController
 
         $model->save([
             'nama_pegawai'  => $this->request->getPost('nama_pegawai'),
-            // --- PERBAIKAN 2: Tambahkan input Divisi ---
             'divisi'        => $this->request->getPost('divisi'),
             'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
             'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
             'foto_pegawai'  => $namaFoto
         ]);
 
-        return redirect()->to('admin/pegawai')->with('msg', 'Data Pegawai Berhasil Ditambah');
+        return redirect()->to('admin/pegawai')->with('msg', 'Data Berhasil Ditambah');
     }
 
-    // 3. UPDATE (Edit)
+    // 3. UPDATE
     public function edit($id)
     {
         $model = new PegawaiModel();
@@ -86,7 +94,6 @@ class Pegawai extends BaseController
     {
         $model = new PegawaiModel();
         $oldData = $model->find($id);
-
         $foto = $this->request->getFile('foto_pegawai');
 
         if ($foto->isValid() && ! $foto->hasMoved()) {
@@ -101,17 +108,16 @@ class Pegawai extends BaseController
 
         $model->update($id, [
             'nama_pegawai'  => $this->request->getPost('nama_pegawai'),
-            // --- PERBAIKAN 3: Jangan lupa update Divisi juga ---
             'divisi'        => $this->request->getPost('divisi'),
             'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
             'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
             'foto_pegawai'  => $namaFoto
         ]);
 
-        return redirect()->to('admin/pegawai')->with('msg', 'Data Pegawai Berhasil Diupdate');
+        return redirect()->to('admin/pegawai')->with('msg', 'Data Berhasil Diupdate');
     }
 
-    // 4. DELETE (Hapus)
+    // 4. DELETE
     public function delete($id)
     {
         $model = new PegawaiModel();
@@ -122,6 +128,6 @@ class Pegawai extends BaseController
         }
 
         $model->delete($id);
-        return redirect()->to('admin/pegawai')->with('msg', 'Data dihapus');
+        return redirect()->to('admin/pegawai')->with('msg', 'Data Dihapus');
     }
 }
