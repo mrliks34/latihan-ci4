@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Berita Codeigniter</title>
 
+    <link rel="shortcut icon" type="image/png" href="<?= base_url('logo.png') ?>">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?= base_url('css/bootstrap.min.css') ?>" />
 </head>

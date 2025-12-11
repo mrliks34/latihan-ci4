@@ -20,6 +20,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('about') ?>">Tentang Kami</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('contact') ?>">Hubungi Kami</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('faqs') ?>">FAQ</a>
+                </li>
             </ul>
 
             <ul class="navbar-nav ml-auto">

@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login - Ilkom C Malam Media</title>
+    <link rel="shortcut icon" type="image/png" href="<?= base_url('logo.png') ?>">
 
     <link href="<?= base_url('css/bootstrap.min.css') ?>" rel="stylesheet">
 
