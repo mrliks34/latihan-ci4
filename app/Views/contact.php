@@ -6,7 +6,14 @@
     <div class="row">
         <div class="col-md-6">
 
-            <h3 class="h3">Hello <?= $name ?>!</h3>
+            <h3 class="h3">
+                Hello
+                <?php if (session()->get('logged_in')): ?>
+                    <?= esc(session()->get('user_name')) ?>!
+                <?php else: ?>
+                    Kawan!
+                <?php endif; ?>
+            </h3>
             <p>Silakan hubungi kami melalui form berikut</p>
 
             <form action="" class="form">

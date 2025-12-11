@@ -12,7 +12,7 @@ class AdminSeeder extends Seeder
         $email = getenv('ADMIN_EMAIL');
         $password = getenv('ADMIN_PASSWORD');
 
-        // Cek dulu, kalau di .env kosong, jangan jalankan (biar gak error)
+        // Untuk cek ENV
         if (empty($email) || empty($password)) {
             $email = 'admin@default.com';
             $password = 'admin123';

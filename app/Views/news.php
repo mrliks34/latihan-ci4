@@ -1,5 +1,3 @@
-<?= $this->extend('layout/page_layout.php') ?>
-
 <?= $this->extend('layout/post_layout') ?>
 
 <?= $this->section('content') ?>
