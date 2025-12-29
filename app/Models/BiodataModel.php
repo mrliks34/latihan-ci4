@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class BiodataModel extends Model
 {
-    protected $table            = 'biodatas';
+    protected $table            = 'biodata';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';

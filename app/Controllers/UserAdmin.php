@@ -3,6 +3,9 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
+use App\Models\ActivityModel;
+use App\Models\EducationModel;
+use App\Models\BiodataModel;
 
 class UserAdmin extends BaseController
 {

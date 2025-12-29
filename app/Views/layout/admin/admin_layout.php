@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - ILKOM C MALAM</title>
     <link rel="shortcut icon" type="image/png" href="<?= base_url('logo.png') ?>">
+
     <link href="<?= base_url('css/bootstrap.min.css') ?>" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
@@ -35,11 +39,17 @@
         .sidebar .nav-link:hover,
         .sidebar .nav-link.active {
             background-color: #f0f4ff;
-            /* Biru muda sekali */
             color: #0d6efd;
-            /* Biru Primary */
         }
 
+        .sidebar .sb-nav-link-icon {
+            display: inline-block;
+            width: 24px;
+            text-align: center;
+            margin-right: 8px;
+        }
+
+        /* Style tambahan buat icon */
         .main-content {
             margin-left: 250px;
             padding: 30px;
@@ -64,7 +74,7 @@
         <ul class="nav flex-column">
             <li class="nav-item">
                 <a class="nav-link <?= (uri_string() == 'admin/news') ? 'active' : '' ?>" href="<?= base_url('admin/news') ?>">
-                    📰 Berita
+                    <i class="fas fa-newspaper sb-nav-link-icon"></i> Berita
                 </a>
             </li>
 
@@ -72,13 +82,33 @@
 
             <li class="nav-item">
                 <a class="nav-link <?= (strpos(uri_string(), 'admin/pegawai') !== false) ? 'active' : '' ?>" href="<?= base_url('admin/pegawai') ?>">
-                    👥 Data Pegawai
+                    <i class="fas fa-users sb-nav-link-icon"></i> Data Pegawai
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link <?= (strpos(uri_string(), 'admin/users') !== false) ? 'active' : '' ?>" href="<?= base_url('admin/users') ?>">
-                    🔑 Akun User
+                    <i class="fas fa-key sb-nav-link-icon"></i> Akun User
+                </a>
+            </li>
+
+            <li class="nav-item my-2 text-uppercase small text-muted px-2 fw-bold">Proyek Akhir</li>
+
+            <li class="nav-item">
+                <a class="nav-link <?= (strpos(uri_string(), 'admin/activities') !== false) ? 'active' : '' ?>" href="<?= base_url('admin/activities') ?>">
+                    <i class="fas fa-calendar-check sb-nav-link-icon"></i> Aktivitas
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link <?= (strpos(uri_string(), 'admin/education') !== false) ? 'active' : '' ?>" href="<?= base_url('admin/education') ?>">
+                    <i class="fas fa-graduation-cap sb-nav-link-icon"></i> Pendidikan
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link <?= (strpos(uri_string(), 'admin/biodata') !== false) ? 'active' : '' ?>" href="<?= base_url('admin/biodata') ?>">
+                    <i class="fas fa-id-card sb-nav-link-icon"></i> Biodata
                 </a>
             </li>
         </ul>
